@@ -1,0 +1,44 @@
+<section class="wrapper">
+
+    <section class="main-container">
+
+        <section class="header">
+            <!-- LOGO -->
+            <img src="assets/img/logo.png" /><!-- END LOGO -->
+        </section>
+
+        <section class="content">
+
+            <div class="container">
+                <div class="terms-search">
+                    <!-- FACTS SEARCH -->
+                    <h3 class="terms-header-title">
+                        Título destaque sobre a <span>ação</span> da <span>pesquisa</span>
+                    </h3>
+                    <div class="row justify-content-md-center">
+                        <!-- ROW -->
+                        <div class="col-12">
+                            <form class="terms-search-form" [formGroup]="factForm">
+                                <!-- START FORM -->
+                                <input class="terms-text" type="text" formControlName="term"
+                                    placeholder="Insira o termo ou URL que deseja verificar">
+                                <span class="inline-button">
+                                    <button id="search-btn" [disabled]="!factForm.valid" (click)="executeSearch()"> <img
+                                            src="assets/img/search.svg"> Verificar</button>
+                                </span>
+                            </form> <!-- END FORM -->
+                        </div>
+                    </div> <!-- END ROW -->
+
+                </div> <!-- END FACTS SEARCH -->
+            </div>
+
+        </section>
+
+    </section>
+
+    <section class="footer item item-end">
+        <p>© 2019 TCC 2 - UniMetrocamp Wyden</p>
+    </section>
+
+</section>
