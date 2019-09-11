@@ -4,9 +4,8 @@
         grid-template-columns: auto;
         grid-template-rows: 70px auto 54px;
         
-        width: 100vw;
         height: 100vh;
-        background: #eee;
+        background: #fff;
     }
 
     .header {
@@ -95,12 +94,10 @@
 
         .results {
             & {
-                background: #FFF;
-                border: 1px solid #dadce0;
-                border-radius: 8px;
                 position: relative;
-                color: #202124;
+                background: #FFF;
                 vertical-align: top;
+                color: #202124;
                 padding: 20px;
             }
             .item {
@@ -110,88 +107,16 @@
                                           "_div_ _div_";
                     grid-template-rows: 100px;
                     grid-template-columns: auto 100px;
+
+                    border: 1px solid #dadce0;
+                    border-radius: 8px;
+                    padding: 20px;
+                    margin-bottom: 20px;
                 }
-                &::after {
-                    grid-area: _div_;
-                    content: '';
-                    margin: 10px 0;
-                    background: #ddd;
-                    height: 1px;
+                &:last-child {
+                    margin-bottom: 0px;
                 }
-                /*&:first-of-type {   
-                    .item-left {
-                        & {
-                            grid-area: _left_;
-                            grid-row: 1;
-                            grid-column: 1;
-                        }
-                        .title {
-                            &{
-                                font-size: 1.075rem;
-                                color: inherit;
-                            }
-                            a {
-                                position: relative;
-                                padding-left: 0px;
-                                color: #202124;
-                            }
-                            a::before {
-                                content: '';
-                                display: block;
-                                position: absolute;
-                                top: 6px;
-                                left: 0;
-                                width: 4px;
-                                height: 4px;
-                                border-radius: 2px;
-                                background: transparent;
-                            }
-                        }
-                        .description {
-                            display: none;
-                        }
-                        .source {
-                            a {
-                                font-size: .75rem;
-                                color: inherit;
-                                vertical-align: middle;
-                                white-space: nowrap;
-                            }
-                            time {
-                                font-size: .75rem;
-                                color: inherit;
-                                opacity: .7;
-                            }
-                            time::before {
-                                font-size: .5625rem;
-                                content: '\0000a0\002022\0000a0';
-                                margin-right: .25rem;
-                            }
-                        }
-                    }
-                    .item-right {
-                        & {
-                            grid-area: _right_;
-                            grid-row: 1;
-                            grid-column: 2; 
-                        }
-                        .image {
-                            & {
-                                display: block;
-                                z-index: 1;
-                                width: 100px;
-                                height: 100px;
-                                overflow: hidden;
-                                border-radius: 8px;
-                            }
-                            img {
-                                width: 100%;
-                                height: 100%;
-                                object-fit: cover;
-                            }
-                        }
-                    }
-                }*/
+                
                 /* Others results */
                 .item-left {
                         & {
@@ -226,16 +151,27 @@
                             opacity: .7;
                         }
                         .source {
+                            & {
+                                margin-top: 10px;
+                            }
+                            i {
+                                font-size: 12px;
+                                padding-right: 5px;
+                                vertical-align: middle;
+                                color: #666;
+                            }
                             a {
                                 font-size: .75rem;
-                                color: inherit;
+                                color: #333;
+                                font-weight: 400;
                                 vertical-align: middle;
                                 white-space: nowrap;
+                                opacity: 0.8 !important;
                             }
                             time {
                                 font-size: .75rem;
                                 color: inherit;
-                                opacity: .7;
+                                opacity: 0.5;
                             }
                             time::before {
                                 font-size: .5625rem;
