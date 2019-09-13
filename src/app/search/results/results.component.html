@@ -12,10 +12,10 @@
                         <input class="terms-text" type="text" formControlName="term"
                             placeholder="Insira o termo ou URL que deseja verificar">
                         <span class="inline-button">
-                            <button class="search-btn" [disabled]="!factForm.valid" (click)="executeSearch()" [hidden]="isResults">
+                            <button class="search-btn" [disabled]="!factForm.valid" (click)="executeSearch()" [hidden]="hasResults">
                                 <img src="assets/img/search.svg"> Verificar</button>
                             
-                            <button class="search-clear" (click)="clearSearch()" [hidden]="!isResults"><i class="fa fa-close"></i></button>
+                            <button class="search-clear" (click)="clearSearch()" [hidden]="!hasResults"><i class="fa fa-close"></i></button>
                         </span>
                     </form> <!-- END FORM -->
                 </div>
@@ -29,125 +29,28 @@
                 <div class="col-12 results">
                     <h3>Resultados</h3>
                     <hr/>
-                    <article class="item">
+                    <!-- ARTICLE -->
+                    <article class="item" *ngFor="let fact of facts">
                         <div class="item-left">
                             <h4 class="title">
-                                <a href="#link">Governo quer nova CPMF de 0,4% para saques e depósitos em dinheiro</a>
+                                <a href="{{fact.source.url}}">{{fact.title}}</a>
                             </h4>
                             <div class="description">
-                                <span>O governo planeja em sua proposta
-                                    de reforma tributária que saques e depósitos em dinheiro sejam taxados com uma alíquota inicial de 0,4%. A
-                                    cobrança ...</span>
+                                <span>{{fact.description ? fact.description : '...'}}</span>
                             </div>
                             <div class="source">
-                                <i class="fa fa-link"></i>
-                                <a href="#link">Folha de S.Paulo</a>
+                                <i class="fa fa-link"></i> 
+                                <a href="{{fact.source.host.url}}" target="_new">{{fact.source.host.name}}</a>
                                 <time datetime="2019-09-10T16:09:00Z">Ontem</time>
                             </div>
                         </div>
                         <div class="item-right">
                             <figure class="image">
-                                <img src="https://lh6.googleusercontent.com/proxy/7kkCvvegYuOjEIGA7Gz-GTBEIXWYqzJp0aFDgSBgRtR1XsfHCCPUY68jQmq3vAJR3sw08N2IBEmbsuAUCNKh0l7zykKU54fQ10ICOiVe-Xg5TGCDDjetjF3jsL8UtpWJcXAE4YP3WfztSmD5DkMAqIoa5pZLJBhwXx8hFcg4yCS4SHna09qAR6NAZqnnylFeTd_EgJFP=-w200-h200-p"
+                                <img src="{{fact.image ? fact.image : 'assets/img/placeholder.png'}}"
                                     alt="">
                             </figure>
                         </div>
-                    </article>
-                    <article class="item">
-                        <div class="item-left">
-                            <h4 class="title">
-                                <a href="#link">Governo quer nova CPMF de 0,4% para saques e depósitos em dinheiro</a>
-                            </h4>
-                            <div class="description">
-                                <span>O governo planeja em sua proposta
-                                    de reforma tributária que saques e depósitos em dinheiro sejam taxados com uma alíquota inicial de 0,4%.
-                                    A
-                                    cobrança ...</span>
-                            </div>
-                            <div class="source">
-                                <i class="fa fa-link"></i>
-                                <a href="#link">Folha de S.Paulo</a>
-                                <time datetime="2019-09-10T16:09:00Z">Ontem</time>
-                            </div>
-                        </div>
-                        <div class="item-right">
-                            <figure class="image">
-                                <img src="https://lh6.googleusercontent.com/proxy/7kkCvvegYuOjEIGA7Gz-GTBEIXWYqzJp0aFDgSBgRtR1XsfHCCPUY68jQmq3vAJR3sw08N2IBEmbsuAUCNKh0l7zykKU54fQ10ICOiVe-Xg5TGCDDjetjF3jsL8UtpWJcXAE4YP3WfztSmD5DkMAqIoa5pZLJBhwXx8hFcg4yCS4SHna09qAR6NAZqnnylFeTd_EgJFP=-w200-h200-p"
-                                    alt="">
-                            </figure>
-                        </div>
-                    </article>
-                    <article class="item">
-                        <div class="item-left">
-                            <h4 class="title">
-                                <a href="#link">Governo quer nova CPMF de 0,4% para saques e depósitos em dinheiro</a>
-                            </h4>
-                            <div class="description">
-                                <span>O governo planeja em sua proposta
-                                    de reforma tributária que saques e depósitos em dinheiro sejam taxados com uma alíquota inicial de 0,4%.
-                                    A
-                                    cobrança ...</span>
-                            </div>
-                            <div class="source">
-                                <i class="fa fa-link"></i>
-                                <a href="#link">Folha de S.Paulo</a>
-                                <time datetime="2019-09-10T16:09:00Z">Ontem</time>
-                            </div>
-                        </div>
-                        <div class="item-right">
-                            <figure class="image">
-                                <img src="https://lh6.googleusercontent.com/proxy/7kkCvvegYuOjEIGA7Gz-GTBEIXWYqzJp0aFDgSBgRtR1XsfHCCPUY68jQmq3vAJR3sw08N2IBEmbsuAUCNKh0l7zykKU54fQ10ICOiVe-Xg5TGCDDjetjF3jsL8UtpWJcXAE4YP3WfztSmD5DkMAqIoa5pZLJBhwXx8hFcg4yCS4SHna09qAR6NAZqnnylFeTd_EgJFP=-w200-h200-p"
-                                    alt="">
-                            </figure>
-                        </div>
-                    </article>
-                    <article class="item">
-                        <div class="item-left">
-                            <h4 class="title">
-                                <a href="#link">Governo quer nova CPMF de 0,4% para saques e depósitos em dinheiro</a>
-                            </h4>
-                            <div class="description">
-                                <span>O governo planeja em sua proposta
-                                    de reforma tributária que saques e depósitos em dinheiro sejam taxados com uma alíquota inicial de 0,4%.
-                                    A
-                                    cobrança ...</span>
-                            </div>
-                            <div class="source">
-                                <i class="fa fa-link"></i>
-                                <a href="#link">Folha de S.Paulo</a>
-                                <time datetime="2019-09-10T16:09:00Z">Ontem</time>
-                            </div>
-                        </div>
-                        <div class="item-right">
-                            <figure class="image">
-                                <img src="https://lh6.googleusercontent.com/proxy/7kkCvvegYuOjEIGA7Gz-GTBEIXWYqzJp0aFDgSBgRtR1XsfHCCPUY68jQmq3vAJR3sw08N2IBEmbsuAUCNKh0l7zykKU54fQ10ICOiVe-Xg5TGCDDjetjF3jsL8UtpWJcXAE4YP3WfztSmD5DkMAqIoa5pZLJBhwXx8hFcg4yCS4SHna09qAR6NAZqnnylFeTd_EgJFP=-w200-h200-p"
-                                    alt="">
-                            </figure>
-                        </div>
-                    </article>
-                    <article class="item">
-                        <div class="item-left">
-                            <h4 class="title">
-                                <a href="#link">Governo quer nova CPMF de 0,4% para saques e depósitos em dinheiro</a>
-                            </h4>
-                            <div class="description">
-                                <span>O governo planeja em sua proposta
-                                    de reforma tributária que saques e depósitos em dinheiro sejam taxados com uma alíquota inicial de 0,4%.
-                                    A
-                                    cobrança ...</span>
-                            </div>
-                            <div class="source">
-                                <i class="fa fa-link"></i>
-                                <a href="#link">Folha de S.Paulo</a>
-                                <time datetime="2019-09-10T16:09:00Z">Ontem</time>
-                            </div>
-                        </div>
-                        <div class="item-right">
-                            <figure class="image">
-                                <img src="https://lh6.googleusercontent.com/proxy/7kkCvvegYuOjEIGA7Gz-GTBEIXWYqzJp0aFDgSBgRtR1XsfHCCPUY68jQmq3vAJR3sw08N2IBEmbsuAUCNKh0l7zykKU54fQ10ICOiVe-Xg5TGCDDjetjF3jsL8UtpWJcXAE4YP3WfztSmD5DkMAqIoa5pZLJBhwXx8hFcg4yCS4SHna09qAR6NAZqnnylFeTd_EgJFP=-w200-h200-p"
-                                    alt="">
-                            </figure>
-                        </div>
-                    </article>
+                    </article> <!-- END ARTICLE -->
                 </div>
             </div>
         </div>

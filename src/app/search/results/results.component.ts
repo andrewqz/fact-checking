@@ -1,3 +1,4 @@
+import { FactService } from '../../core/services/fact.service';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 
@@ -8,22 +9,29 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 })
 export class ResultsComponent implements OnInit {
 
-  isResults: boolean;
+  hasResults: boolean;
+  facts: any[];
 
   factForm = new FormGroup({
     term: new FormControl('', [Validators.required])
   });
 
-  constructor() { }
+  constructor(private factService: FactService) { }
 
   ngOnInit() {
-    this.isResults = true;
-    this.factForm.get('term').setValue('Bolsonaro');
+
+    this.factService.getFacts().subscribe((data) => {
+      this.facts = data;
+      console.log(data);
+      this.hasResults = true;
+      this.factForm.get('term').setValue('maior empresa');
+    });
+
   }
 
   clearSearch() {
     this.factForm.reset();
-    this.isResults = false;
+    this.hasResults = false;
   }
 
 }

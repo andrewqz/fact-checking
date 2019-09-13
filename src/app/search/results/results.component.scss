@@ -12,7 +12,8 @@
         & {
             grid-row: 1;
             position: relative;
-            background: #27283c;
+            // background: #27283c;
+            background: #3166c8;
             text-align: center;
         }
         .header-logo {
@@ -128,10 +129,12 @@
                             &{
                                 font-size: .875rem;
                                 color: inherit;
+                                line-height: 20px;
                             }
                             a {
                                 position: relative;
-                                padding-left: 10px;
+                                padding: 0px 10px;
+                                display: block;
                             }
                             a::before {
                                 content: '';
